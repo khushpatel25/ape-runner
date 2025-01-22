@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      charset="UTF-8"
+      content="width=device-width,minimum-scale=1,maximum-scale=1"
+      name="viewport"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#0dbdca" />
+    <link rel="icon" href="../../assets/favicon.png" />
+    <title>Infinite Runner Game</title>
+    <style>
+      @font-face {
+        font-family: "pixelmix";
+        src: url("./assets/fonts/pixelmix.ttf");
+      }
+      @font-face {
+        font-family: "pixelmix_bold";
+        src: url("./assets/fonts/pixelmix_bold.ttf");
+      }
+      #rotate.active {
+        display: block;
+      }
+      #rotate {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        z-index: 3002;
+      }
+      #rotate img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 10%;
+        max-width: 300px;
+      }
+      #parent {
+        height: 100vh; /* Full viewport height */
+        width: 100vw; /* Full viewport width */
+        background-image: url("./assets/backgrounds/Hills_night/layer1.png"); /* Correct image path */
+        background-size: cover; /* Ensures the image covers the container */
+        background-repeat: no-repeat; /* Prevents tiling */
+        background-position: center; /* Centers the image */
+      }
+      @media screen and (max-width: 768px) {
+        #rotate img {
+          width: 30% !important;
+        }
+      }
+      #game-sec {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .dummy {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .dummy p:nth-child(1) {
+        font-family: "pixelmix_bold";
+      }
+      .dummy p:nth-child(2) {
+        font-family: "pixelmix";
+      }
+      /* #username_field,#username_field2{
+            display:none;
+        } */
+      #loader-sec {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 3000;
+        display: none;
+      }
+      #loader-sec.active {
+        display: block;
+      }
+      #loader-sec img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20vw;
+        max-width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="parent">
+      <div id="game-sec"></div>
+      <div class="dummy">
+        <p>1</p>
+        <p>2</p>
+      </div>
+      <div
+        id="username_field"
+        style="display: flex; justify-content: center; align-items: center; flex-direction: column;"
+      >
+        <input
+          type="text"
+          id="username_input"
+          placeholder="Enter your username"
+          style="font-size: 16px; padding: 10px"
+        />
+        <input
+        type="password"
+        id="password_input"
+        placeholder="Enter your password"
+        style="font-size: 16px; padding: 10px; margin-top: 10px;"
+      />
+        <button
+          id="start_game_button"
+          style="
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+          "
+        >
+          Start Game
+        </button>
+      </div>
+      <!-- <div id="wallet_field">
+    <input type="text" name="" id="" placeholder="Type Here">
+</div>
+<div id="username_field2">
+    <input type="text" name="" id="" placeholder="Search Username">
+</div> -->
+    </div>
+    <div id="rotate">
+      <img src="./assets/tilt.png" alt="" srcset="" />
+    </div>
+    <div id="loader-sec">
+      <img src="./assets/loader.svg" alt="" srcset="" />
+    </div>
+
+    <div class="webcam_sec">
+      <canvas
+        class="output_canvas"
+        id="output_canvas"
+        width="1280"
+        height="720"
+        style=""
+      ></canvas>
+      <video id="webcam" autoplay playsinline></video>
+      <p id="gesture_output" class="output"></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"elephant_front0000":
+{
+	"frame": {"x":1248,"y":2,"w":632,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":8,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0001":
+{
+	"frame": {"x":2,"y":2,"w":626,"h":433},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":8,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0002":
+{
+	"frame": {"x":632,"y":2,"w":612,"h":423},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":21,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0003":
+{
+	"frame": {"x":628,"y":439,"w":612,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":28,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0004":
+{
+	"frame": {"x":1244,"y":826,"w":612,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":28,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0005":
+{
+	"frame": {"x":628,"y":850,"w":612,"h":407},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":28,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0006":
+{
+	"frame": {"x":2,"y":852,"w":612,"h":393},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":29,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0007":
+{
+	"frame": {"x":1248,"y":413,"w":622,"h":409},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":13,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0008":
+{
+	"frame": {"x":2,"y":439,"w":622,"h":409},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":6,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+},
+"elephant_front0009":
+{
+	"frame": {"x":1244,"y":1237,"w":622,"h":373},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":0,"w":643,"h":444},
+	"sourceSize": {"w":643,"h":444}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "elephant_front.png",
+	"format": "RGBA8888",
+	"size": {"w":1882,"h":1616},
+	"scale": "1"
+}
+}

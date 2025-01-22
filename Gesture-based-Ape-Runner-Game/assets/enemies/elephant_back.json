@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"elephant_back0000":
+{
+	"frame": {"x":2,"y":2,"w":491,"h":292},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0001":
+{
+	"frame": {"x":966,"y":2,"w":452,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0002":
+{
+	"frame": {"x":859,"y":298,"w":401,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0003":
+{
+	"frame": {"x":2,"y":594,"w":371,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0004":
+{
+	"frame": {"x":377,"y":594,"w":371,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0005":
+{
+	"frame": {"x":752,"y":594,"w":371,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0006":
+{
+	"frame": {"x":1127,"y":594,"w":371,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0007":
+{
+	"frame": {"x":448,"y":298,"w":407,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0008":
+{
+	"frame": {"x":2,"y":298,"w":442,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+},
+"elephant_back0009":
+{
+	"frame": {"x":497,"y":2,"w":465,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":491,"h":292},
+	"sourceSize": {"w":491,"h":292}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "elephant_back.png",
+	"format": "RGBA8888",
+	"size": {"w":1500,"h":894},
+	"scale": "1"
+}
+}

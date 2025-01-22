@@ -1,0 +1,43 @@
+﻿{"frames": {
+
+"bird0000":
+{
+	"frame": {"x":2,"y":2,"w":90,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":60},
+	"sourceSize": {"w":90,"h":60}
+},
+"bird0001":
+{
+	"frame": {"x":2,"y":66,"w":90,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":60},
+	"sourceSize": {"w":90,"h":60}
+},
+"bird0002":
+{
+	"frame": {"x":2,"y":130,"w":90,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":60},
+	"sourceSize": {"w":90,"h":60}
+},
+"bird0003":
+{
+	"frame": {"x":2,"y":194,"w":90,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":60},
+	"sourceSize": {"w":90,"h":60}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "bird.png",
+	"format": "RGBA8888",
+	"size": {"w":94,"h":256},
+	"scale": "1"
+}
+}

@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"guitar_fire0000":
+{
+	"frame": {"x":3307,"y":2,"w":374,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":8,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0001":
+{
+	"frame": {"x":3307,"y":176,"w":354,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":3,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0002":
+{
+	"frame": {"x":3301,"y":526,"w":333,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":0,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0003":
+{
+	"frame": {"x":3303,"y":351,"w":348,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":11,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0004":
+{
+	"frame": {"x":2809,"y":590,"w":273,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":298,"y":38,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0005":
+{
+	"frame": {"x":2,"y":296,"w":3297,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":294,"y":4,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0006":
+{
+	"frame": {"x":2,"y":2,"w":3301,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":293,"y":4,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0007":
+{
+	"frame": {"x":2,"y":149,"w":3301,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":293,"y":4,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0008":
+{
+	"frame": {"x":2,"y":443,"w":3295,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":293,"y":4,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+},
+"guitar_fire0009":
+{
+	"frame": {"x":2,"y":590,"w":2803,"h":143},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":295,"y":4,"w":3594,"h":182},
+	"sourceSize": {"w":3594,"h":182}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "guitar_fire.png",
+	"format": "RGBA8888",
+	"size": {"w":3700,"h":740},
+	"scale": "1"
+}
+}

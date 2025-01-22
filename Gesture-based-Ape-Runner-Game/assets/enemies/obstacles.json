@@ -1,0 +1,43 @@
+﻿{"frames": {
+
+"obstacles0000":
+{
+	"frame": {"x":2,"y":2,"w":120,"h":180},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":180},
+	"sourceSize": {"w":200,"h":180}
+},
+"obstacles0001":
+{
+	"frame": {"x":126,"y":2,"w":120,"h":180},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":180},
+	"sourceSize": {"w":200,"h":180}
+},
+"obstacles0002":
+{
+	"frame": {"x":2,"y":186,"w":200,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":180},
+	"sourceSize": {"w":200,"h":180}
+},
+"obstacles0003":
+{
+	"frame": {"x":2,"y":290,"w":200,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":180},
+	"sourceSize": {"w":200,"h":180}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "obstacles.png",
+	"format": "RGBA8888",
+	"size": {"w":252,"h":392},
+	"scale": "1"
+}
+}

@@ -1,0 +1,91 @@
+﻿{"frames": {
+
+"Closed_Fist":
+{
+	"frame": {"x":183,"y":612,"w":180,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":150},
+	"sourceSize": {"w":180,"h":150}
+},
+"Open_Palm":
+{
+	"frame": {"x":184,"y":459,"w":180,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":150},
+	"sourceSize": {"w":180,"h":150}
+},
+"Pointing_Up":
+{
+	"frame": {"x":185,"y":306,"w":181,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":150},
+	"sourceSize": {"w":181,"h":150}
+},
+"ILoveYou":
+{
+	"frame": {"x":185,"y":0,"w":182,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":150},
+	"sourceSize": {"w":182,"h":150}
+},
+"Thumb_Down":
+{
+	"frame": {"x":185,"y":153,"w":182,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":150},
+	"sourceSize": {"w":182,"h":150}
+},
+"Thumb_Up":
+{
+	"frame": {"x":0,"y":153,"w":182,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":150},
+	"sourceSize": {"w":182,"h":150}
+},
+"Victory":
+{
+	"frame": {"x":0,"y":612,"w":180,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":180,"h":150},
+	"sourceSize": {"w":180,"h":150}
+},
+"high_five":
+{
+	"frame": {"x":0,"y":459,"w":181,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":150},
+	"sourceSize": {"w":181,"h":150}
+},
+"swipe_left":
+{
+	"frame": {"x":0,"y":306,"w":182,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":150},
+	"sourceSize": {"w":182,"h":150}
+},
+"swipe_right":
+{
+	"frame": {"x":0,"y":0,"w":182,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":150},
+	"sourceSize": {"w":182,"h":150}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "gestures.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":1024},
+	"scale": "1"
+}
+}

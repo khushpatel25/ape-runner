@@ -1,0 +1,35 @@
+﻿{"frames": {
+
+"volcano_anim0000":
+{
+	"frame": {"x":2,"y":2,"w":513,"h":257},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":513,"h":257},
+	"sourceSize": {"w":513,"h":257}
+},
+"volcano_anim0001":
+{
+	"frame": {"x":2,"y":263,"w":513,"h":257},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":513,"h":257},
+	"sourceSize": {"w":513,"h":257}
+},
+"volcano_anim0002":
+{
+	"frame": {"x":2,"y":524,"w":513,"h":257},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":513,"h":257},
+	"sourceSize": {"w":513,"h":257}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "volcano_anim.png",
+	"format": "RGBA8888",
+	"size": {"w":522,"h":788},
+	"scale": "1"
+}
+}

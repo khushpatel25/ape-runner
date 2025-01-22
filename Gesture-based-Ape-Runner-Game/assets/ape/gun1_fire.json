@@ -1,0 +1,59 @@
+﻿{"frames": {
+
+"gun1_fire0000":
+{
+	"frame": {"x":334,"y":542,"w":143,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":31,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+},
+"gun1_fire0001":
+{
+	"frame": {"x":2,"y":542,"w":328,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":95,"y":31,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+},
+"gun1_fire0002":
+{
+	"frame": {"x":2,"y":2,"w":3511,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":0,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+},
+"gun1_fire0003":
+{
+	"frame": {"x":2,"y":137,"w":3510,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":0,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+},
+"gun1_fire0004":
+{
+	"frame": {"x":2,"y":272,"w":3510,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":0,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+},
+"gun1_fire0005":
+{
+	"frame": {"x":2,"y":407,"w":3510,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":0,"w":3609,"h":131},
+	"sourceSize": {"w":3609,"h":131}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "19.0.0.326",
+	"image": "gun1_fire.png",
+	"format": "RGBA8888",
+	"size": {"w":3520,"h":644},
+	"scale": "1"
+}
+}

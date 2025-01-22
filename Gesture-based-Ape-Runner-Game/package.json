@@ -1,0 +1,51 @@
+{
+    "name": "Flanker_Task",
+    "version": "1.0.0",
+    "description": "",
+    "author": "S@!f",
+    "main": "index.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline --color --mode=development --https",
+        "build:dev": "cross-env NODE_ENV=dev webpack -p --mode=production",
+        "build:prod": "cross-env NODE_ENV=prod webpack -p--mode=production"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/polyfill": "^7.8.7",
+        "@babel/preset-env": "^7.9.0",
+        "babel-loader": "^8.1.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "cross-env": "^7.0.2",
+        "css-loader": "^3.4.2",
+        "expose-loader": "^0.7.1",
+        "file-loader": "^6.1.0",
+        "friendly-errors-webpack-plugin": "^1.7.0",
+        "git-revision-webpack-plugin": "^3.0.4",
+        "html-webpack-plugin": "^4.0.1",
+        "phaser3-rex-plugins": "^1.1.39",
+        "sass": "^1.80.3",
+        "sass-loader": "^10.1.1",
+        "style-loader": "^1.3.0",
+        "url-loader": "^4.1.1",
+        "webfontloader": "^1.6.28",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3",
+        "yargs": "^15.3.1"
+    },
+    "dependencies": {
+        "@mediapipe/tasks-vision": "^0.10.17",
+        "axios": "^1.7.9",
+        "config": "^3.3.1",
+        "crypto": "^1.0.1",
+        "crypto-js": "^3.1.9-1",
+        "fs": "0.0.1-security",
+        "jquery": "^3.5.1",
+        "jssha": "^3.1.2",
+        "mobile-device-detect": "^0.4.3",
+        "moment": "^2.30.1",
+        "phaser": "^3.50.1",
+        "request": "^2.79.0"
+    }
+}
