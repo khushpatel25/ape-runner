@@ -27,6 +27,7 @@ export class UI extends Phaser.GameObjects.Group {
         this.emitter.on('game:on_game_end', this.onGameFinished.bind(this));
 
 
+
         Object.keys(Global.uiWeapons).forEach((key, i) => {
             if (Global.uiWeapons[key]['enabled']) {
                 this.activeWeapon = key;
@@ -181,7 +182,8 @@ export class UI extends Phaser.GameObjects.Group {
         this.scoreTxt.setDepth(1000);
         this.scoreTxt.setScrollFactor(0);
 
-        this.highscoreTxt = this.scene.add.text(this.scorePanel.x + this.scorePanel.width * .93 * (1 - this.scorePanel.originX) * this.scorePanel.scaleX, this.scorePanel.y + this.scorePanel.height * .72 * this.scorePanel.scaleY, '00', {
+
+        this.highscoreTxt = this.scene.add.text(this.scorePanel.x + this.scorePanel.width * .93 * (1 - this.scorePanel.originX) * this.scorePanel.scaleX, this.scorePanel.y + this.scorePanel.height * .72 * this.scorePanel.scaleY, Global.highScore, {
             fontFamily: 'pixelmix',
             fontSize: `${(this.c_w-this.extraLeftPer*2)*.015}px`,
             color: '#ffffff'
@@ -250,6 +252,7 @@ export class UI extends Phaser.GameObjects.Group {
             return [];
         }
     }
+    
 
    // Method to create the leaderboard panel (initially hidden)
 async createLeaderboardPopup() {

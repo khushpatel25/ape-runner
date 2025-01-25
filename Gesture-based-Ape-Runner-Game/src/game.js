@@ -60,6 +60,7 @@ document.getElementById("start_game_button").addEventListener("click", async () 
 
       // Initialize the game (replace with your actual game initialization function)
       gameStart();
+      getHighScore();
     } else {
       alert(res.data.message);
     }
@@ -70,6 +71,18 @@ document.getElementById("start_game_button").addEventListener("click", async () 
 
 });
 
+
+const getHighScore = async () => {
+  try {
+      const userId = localStorage.getItem("userId");
+      console.log(userId)
+      const maxScore = await axios.get(`http://localhost:5001/api/users/getCurrentUser?userId=${userId}`);
+      console.log(maxScore)
+      Global.highScore = maxScore.data.highScore;
+  } catch (error) {
+      console.log(error)
+  }
+}
 
 const gameStart = () => {
 

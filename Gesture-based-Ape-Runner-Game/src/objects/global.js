@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let Global ={
     isMobile:false,
 
@@ -64,6 +66,7 @@ let Global ={
     isWeaponMovable:false,
   
 }
+
 
 export {
     Global

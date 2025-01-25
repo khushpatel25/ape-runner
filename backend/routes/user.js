@@ -16,6 +16,30 @@ router.get("/getUsers", async (req, res) => {
     }
 });
 
+router.get("/getCurrentUser", async (req, res) => {
+    const { userId } = req.query;
+
+    // console.log("currentUser",req)
+
+    if (!userId) {
+        return res.status(400).json({message:"Userid is required!"})
+    }
+
+    try {
+        const existingUser = await User.findOne({userId});
+
+        console.log({existingUser})
+
+        if (!existingUser) {
+            return res.status(404).json({message: "User with this id does not exist!"})
+        }
+
+        return res.status(200).json({ highScore: existingUser.maxScore });
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+})
+
 router.put("/points", async (req, res) => {
 
     const { userId, points } = req.body;
