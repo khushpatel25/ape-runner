@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 router.get("/getUsers", async (req, res) => {
     try {
-        const topUsers = await User.find().sort({ points: -1 }).limit(5).select('userName points');;
+        const topUsers = await User.find().sort({ maxScore: -1 }).limit(5).select('userName maxScore');;
 
         console.log({topUsers})
         // Return the users in the response
@@ -38,7 +38,13 @@ router.put("/points", async (req, res) => {
             return res.status(404).json({message: "User with this id does not exist!"})
         }
 
-        existingUser.points = points;
+        if (existingUser.maxScore <= points) {
+            existingUser.maxScore = points;
+            existingUser.currentScore = points
+        } else {
+            existingUser.currentScore = points;
+        }
+
         await existingUser.save();
 
         res.status(200).json({ message: "Points updated successfully!" });

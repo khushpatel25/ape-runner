@@ -241,7 +241,7 @@ export class UI extends Phaser.GameObjects.Group {
             console.log(response.data);
             const leaderData = response.data.map( user => ({
                 userName: user.userName,
-                points: user.points
+                points: user.maxScore
             }));
             console.log(leaderData);
             return leaderData;

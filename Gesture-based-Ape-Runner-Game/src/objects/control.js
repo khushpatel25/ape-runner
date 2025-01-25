@@ -49,6 +49,12 @@ export default class GameControl extends Phaser.GameObjects.Group {
         }, 250)
         
     }
+
+    resumeGame() {
+        this.setTimeout(() => {
+            this.emitter.emit('game:resumed');
+        },250)
+    }
  
     onKeydown(v) {
         if (v.keyCode == -1 || v.keyCode == 1) {
@@ -63,7 +69,7 @@ export default class GameControl extends Phaser.GameObjects.Group {
             this.emitter.emit('game:drop_weapon');
             return false;
         }
-        if (v.keyCode == 4) {
+        if (v.keyCode == 27) {
             this.pauseGame();
             return false;
         }
