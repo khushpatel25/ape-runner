@@ -50,10 +50,6 @@ export class GameOver extends Phaser.GameObjects.Group{
         this.replayBtn.setDepth(1000);
         this.replayBtn.setScrollFactor(0);
         this.replayBtn.setInteractive({cursor:'pointer'}).on('pointerdown',this.onReplay.bind(this));
-
-
-
-       
     }
     onNameEnter(v){
         Global.userName = v.target.value.trim();
@@ -72,6 +68,9 @@ export class GameOver extends Phaser.GameObjects.Group{
     }
     show(){
         this.setVisible(true);
+        // new addition
+        this.onLeader();
+        
     }
     hide(){
         this.setVisible(false);
@@ -79,6 +78,8 @@ export class GameOver extends Phaser.GameObjects.Group{
     onReplay(){
       
         this.emitter.emit('game:on_replay');
+        //  new addition
+        this.onLeader();
        
     }
 }

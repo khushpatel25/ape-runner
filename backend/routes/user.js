@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 router.get("/getUsers", async (req, res) => {
     try {
-        const topUsers = await User.find().sort({ points: -1 }).limit(5);
+        const topUsers = await User.find().sort({ points: -1 }).limit(5).select('userName points');;
 
         console.log({topUsers})
         // Return the users in the response

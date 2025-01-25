@@ -429,15 +429,15 @@ import axios from "axios";
         }
       });
   
+      // Uncommneted the code which was originally commented.
       // if(Global.playCount>1){
       //   this.emitter.emit('game:start_game');
       // }else{
       //   Global.serverObj=new Server();     
       // }
-      
    
-      /*     this.emitter.emit('game:on_game_end');
-          this.emitter.emit('game:show_leader_board'); */
+      // this.emitter.emit('game:on_game_end');
+      // this.emitter.emit('game:show_leader_board');
     }
   
     activateGame(){
@@ -453,19 +453,36 @@ import axios from "axios";
     }
     showScoreCard() {
       console.log(Global.scoreTotal)
+      console.log("FinalScore displayed.....")
       document.querySelector("#loader-sec").classList.remove("active");
       this.gameOver = new GameOver(this);
       this.gameOver.setUp();
       this.gameOver.init();
       this.submitScore(Global.scoreTotal)
+
+      // // Show the leaderboard after displaying the score
+      // this.showLeaderboard();
+
     }
   
+
+    showLeaderboard() {
+      console.log("Displaying leaderboard...");
+      document.querySelector("#loader-sec").classList.remove("active");
+      this.emitter.emit('game:show_leader_board');
+    
+     // An event listener for when the leaderboard should be displayed
+      this.emitter.on('game:show_leader_board', () => {
+        console.log('Leaderboard is being displayed');
+      });
+    }
+    
     async submitScore(score) {
       
       const userId = localStorage.getItem("userId");
 
       try {
-        const res = await axios.put("http://localhost:5000/api/users/points", {
+        const res = await axios.put("http://localhost:5001/api/users/points", {
           userId,
           points:score
         })
