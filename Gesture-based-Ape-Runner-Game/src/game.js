@@ -10,6 +10,7 @@ import { isMobile, isMobileOnly } from 'mobile-device-detect';
 
 import './style.scss';
 import { Global } from './objects/global';
+import LeaderBoardUI from './scenes/LeaderBoardUI';
 
 let DEFAULT_WIDTH = 1280;
 let DEFAULT_HEIGHT = 720;
@@ -100,7 +101,7 @@ const gameStart = () => {
     dom: {
       createContainer: false
     },
-    scene: [PreLoader, Loader, Game],
+    scene: [PreLoader, Loader, Game, LeaderBoardUI],
     physics: {
       default: 'matter',
       matter: {

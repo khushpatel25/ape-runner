@@ -50,6 +50,12 @@ export default class GameControl extends Phaser.GameObjects.Group {
         
     }
 
+    leaderBoardPauseGame() {
+        setTimeout(() => {
+            this.emitter.emit('game:leaderBoardPaused');
+        }, 250)
+    }
+
     resumeGame() {
         this.setTimeout(() => {
             this.emitter.emit('game:resumed');

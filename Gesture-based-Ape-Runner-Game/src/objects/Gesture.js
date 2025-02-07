@@ -42,6 +42,7 @@ export default class Gesture extends Phaser.GameObjects.Group {
     this.emitter = EventEmitter.getObj();
     this.emitter.on('game:update', this.update.bind(this));
     this.emitter.on('game:paused', this.onPaused.bind(this));
+    this.emitter.on('game:leaderBoardPaused', this.onLeaderBoardPaused.bind(this));
 
     this.webcamRunning = false;
     this.runningMode = "VIDEO";
@@ -351,6 +352,16 @@ export default class Gesture extends Phaser.GameObjects.Group {
     this.onGestureMissing();
     this.scene.scene.pause();
     this.pausedTI= setInterval(this.resumeGameCheck.bind(this), 250)
+
+  }
+
+  onLeaderBoardPaused() {
+    this.onGestureMissing();
+    this.scene.scene.pause();
+    this.pausedTI= setInterval(this.resumeGameCheck.bind(this), 250);
+    setTimeout(() => {
+      this.emitter.emit('game:showLeaderBoard');
+    }, 250)
 
   }
   onResume(){
