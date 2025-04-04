@@ -25,6 +25,7 @@ export default class Loader extends Phaser.Scene {
     let version = '2.0.0';
     
     this.load.image(`floor`,`./assets/backgrounds/floor.png?v=${version}`);
+    this.load.image('heart', 'assets/heart.png');
 
     this.load.image(`snow_night_layer1`,`./assets/backgrounds/Snow_night/layer1.png?v=${version}`);
     this.load.image(`snow_night_layer2`,`./assets/backgrounds/Snow_night/layer2.png?v=${version}`);

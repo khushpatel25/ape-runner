@@ -13,6 +13,7 @@ export class UI extends Phaser.GameObjects.Group {
     gameFinished = false;
     activeWeapon = null;
     scoreMultiplier = 1;
+    heartSprites = [];
     constructor(game) {
         super(game);
     }
@@ -25,6 +26,7 @@ export class UI extends Phaser.GameObjects.Group {
         this.emitter.on('ui:addScore', this.addScore.bind(this));
         this.emitter.on('scene:change_scene', this.updateMultiplier.bind(this));
         this.emitter.on('game:on_game_end', this.onGameFinished.bind(this));
+        this.emitter.on('ui:health_updated', this.updateHearts.bind(this)); // Listen for health updates
         // this.emitter.on('game:showLeaderBoard', this.showLeaderboardPopup.bind(this));
 
 
@@ -210,7 +212,8 @@ export class UI extends Phaser.GameObjects.Group {
         this.highscoreTxt.setScrollFactor(0);
 
 
- 
+        // Initialize hearts (will be updated by updateHearts)
+        this.updateHearts(100); // Initial call with starting health
 
     }
     updateMultiplier() {
@@ -251,6 +254,34 @@ export class UI extends Phaser.GameObjects.Group {
     }
     onGameFinished() {
         this.gameFinished = true;
+    }
+
+    // Clear existing heart sprites
+    clearHearts() {
+        this.heartSprites.forEach(heart => heart.destroy());
+        this.heartSprites = [];
+    }
+
+    // Update heart display based on health
+    updateHearts(health) {
+        this.clearHearts();
+        const heartCount = health === 100 ? 3 : health === 66 ? 2 : health === 33 ? 1 : 0;
+        // let leaderY = !Global.isMobileOnly ? this.extraTop + 1100 * this.scaleFact : this.extraTop + 1100 * this.scaleFact;
+        // let leaderX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .8;
+        const heartScale = (this.c_w - this.extraLeftPer * 5) * .000263 * 0.5; // Adjust scale as needed
+        const heartSpacing = 1000 * this.scaleFact; // Space between hearts
+
+        for (let i = 0; i < heartCount; i++) {
+            const heartX = this.leaderPanel.x + 450 * this.scaleFact + (i * heartSpacing); // Start at leaderboard's x, spread horizontally
+            const heartY = this.leaderPanel.y + this.leaderPanel.height * this.leaderPanel.scaleY + 350 * this.scaleFact; // Below leaderboard
+            // const heart = this.create(heartX, heartY, 'ui', 'monkey_badge0000'); // Replace 'heart0000' with your frame name
+            const heart = this.scene.add.image(heartX, heartY, 'heart'); 
+            heart.setScale(heartScale);
+            heart.setDepth(1000);
+            heart.setScrollFactor(0);
+            this.heartSprites.push(heart);
+        }
+        console.log(`Hearts updated: ${heartCount} hearts displayed for health ${health}`);
     }
 
 

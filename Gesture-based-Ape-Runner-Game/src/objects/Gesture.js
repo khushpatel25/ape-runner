@@ -70,6 +70,10 @@ export default class Gesture extends Phaser.GameObjects.Group {
           modelAssetPath: "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task",
           delegate: "GPU"
         },
+        // baseOptions: {
+        //   modelAssetPath: "/Users/luvpatel/Documents/Dalhousie/SEM5/Gesture_Detection_Model/body_language.pkl",
+        //   delegate: "GPU"
+        // },
         runningMode: this.runningMode,
         numHands: 1
       });
