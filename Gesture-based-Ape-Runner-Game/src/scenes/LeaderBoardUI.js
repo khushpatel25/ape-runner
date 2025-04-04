@@ -1,6 +1,6 @@
 import EventEmitter from "../objects/event-emitter";
 import { Global } from "../objects/global";
-import axios from 'axios';  // Import axios
+import axios from 'axios';
 import {
     setScaleFactor
 } from "../objects/scale_factor";
@@ -14,24 +14,8 @@ export default class LeaderBoardUI extends Phaser.Scene {
     }
 
     init() {
-        // this.leaderPanel = this.add.image(Global.leaderX, Global.leaderY, 'ui', 'leaderboardBtn0000');
-        // this.leaderPanel.setOrigin(Global.isMobileOnly ? 0.5 : 0, 0);
-        // this.leaderPanel.setScale((this.c_w - this.extraLeftPer * 2) * .000363);
-        // this.leaderPanel.setDepth(1000);
-        // this.leaderPanel.setScrollFactor(0);
-        // this.leaderPanel.setInteractive();
-        // setScaleFactor.call(this, false);
-        // Accessing the game canvas width and height directly
-        
         console.log('LeaderBoardUI: init() method called');
-        // Create the leaderboard popup
         this.createLeaderboardPopup();
-
-        // // Add event listener for click or tap
-        // this.leaderPanel.on('pointerdown', () => {
-        //     console.log('Leaderboard button clicked!');
-        //     this.showLeaderboardPopup();
-        // });
     }
 
     async fetchLeaderboardData() {
@@ -52,8 +36,6 @@ export default class LeaderBoardUI extends Phaser.Scene {
 
     async createLeaderboardPopup() {
         console.log('createLeaderboardPopup() called');
-        // Define offset values to move the leaderboard
-
         let gameWidth = this.game.canvas.width;
         let gameHeight = this.game.canvas.height;
         let scaleFact = window.innerHeight / (window.innerWidth + this.extraLeftPer * 3) * (.15) * Global.dpr;
@@ -62,13 +44,10 @@ export default class LeaderBoardUI extends Phaser.Scene {
     
         this.leaderboardPopup = this.add.image(gameWidth * 0.5, gameHeight * 0.5, 'ui', 'panel0000');
 
-// Adjust the leaderboard position with custom values
-// this.leaderboardPopup = this.add.image(1000,500, 'ui', 'panel0000');
-        
         this.leaderboardPopup.setScale(0.35);
         this.leaderboardPopup.setDepth(1003);
         this.leaderboardPopup.setScrollFactor(0);
-        this.leaderboardPopup.setVisible(false); // Initially hidden
+        this.leaderboardPopup.setVisible(false);
 
         // Fetch leaderboard data from the backend API
         this.tempData = await this.fetchLeaderboardData();
@@ -176,16 +155,13 @@ export default class LeaderBoardUI extends Phaser.Scene {
             });
 
             // Resume the game scene
-            this.scene.resume('Game'); // Resumes the game scene 
+            this.scene.resume('Game');
 
             // Hide or stop the leaderboard UI scene
             this.scene.scene.stop('LeaderBoardUI');
         });
 
-        // this.add(this.leaderboardPopup);
-        // this.add(this.closeBtn);
-
-        // Ensure the popup is ready before showing it
+        //Check Popup is ready before showing it
         this.events.emit('leaderboardCreated'); 
     }
 
@@ -217,32 +193,5 @@ export default class LeaderBoardUI extends Phaser.Scene {
         }
     }
 
-    // create() {
-    //     this.emitter = new EventEmitter.getObj();
-
-    //     // Semi-transparent background overlay
-    //     this.bgOverlay = this.add.graphics();
-    //     this.bgOverlay.fillStyle(0x000000, 0.75);
-    //     this.bgOverlay.fillRect(0, 0, this.cameras.main.width, this.cameras.main.height);
-    //     this.bgOverlay.setDepth(5000); // Ensure it's on top
-
-    //     // Leaderboard Panel
-    //     this.leaderboardPopup = this.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'panel0000');
-    //     this.leaderboardPopup.setScale(4);
-    //     this.leaderboardPopup.setDepth(5001);
-
-    //     // Close Button
-    //     this.closeBtn = this.add.image(this.cameras.main.width * 0.75, this.cameras.main.height * 0.35, 'closeBtn0000');
-    //     this.closeBtn.setScale(0.3);
-    //     this.closeBtn.setDepth(5002);
-    //     this.closeBtn.setInteractive();
-    //     this.closeBtn.on('pointerdown', () => {
-    //         this.scene.stop(); // Close the UI scene
-    //         this.scene.resume('Game'); // Resume the main game
-    //     });
-
-    //     // Fetch leaderboard data and display it
-    //     this.displayLeaderboard();
-    // }
 
 }

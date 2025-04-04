@@ -53,16 +53,12 @@ export class UI extends Phaser.GameObjects.Group {
         this.leaderPanel.setScrollFactor(0);
         this.leaderPanel.setInteractive();
         
-         // Create the leaderboard popup
-        // this.createLeaderboardPopup();
-
-
         // Add event listener for click or tap
         this.leaderPanel.on('pointerdown', () => {
             console.log('Leaderboard button clicked!');
             this.scene.scene.pause('Game');  // Pause the game scene
             // Launch the LeaderboardUI scene (if it's not already active)
-            this.scene.scene.launch('LeaderBoardUI');  // This will start the scene if it's not already running
+            this.scene.scene.launch('LeaderBoardUI');
 
             // Get the LeaderboardUI scene instance
             const leaderboardScene = this.scene.scene.get('LeaderBoardUI');
@@ -71,13 +67,9 @@ export class UI extends Phaser.GameObjects.Group {
              // Then, listen for the 'leaderboardCreated' event to ensure the leaderboard is created
              leaderboardScene.events.once('leaderboardCreated', () => {
                  console.log("Leaderboard created, now showing popup");
-                 leaderboardScene.showLeaderboardPopup(); // Show the leaderboard popup after creation
+                 leaderboardScene.showLeaderboardPopup();
              });
-            // Show the leaderboard popup
-            // leaderboardScene.showLeaderboardPopup();
-            // this.scene.scene.pause();
-            // this.scene.scene.get('Game').control.leaderBoardPauseGame();
-            // this.showLeaderboardPopup();
+           
         });
 
         this.scorePanel.setOrigin(Global.isMobileOnly ? 0.5 : 0, 0);
@@ -213,7 +205,7 @@ export class UI extends Phaser.GameObjects.Group {
 
 
         // Initialize hearts (will be updated by updateHearts)
-        this.updateHearts(100); // Initial call with starting health
+        this.updateHearts(100);
 
     }
     updateMultiplier() {
@@ -266,15 +258,12 @@ export class UI extends Phaser.GameObjects.Group {
     updateHearts(health) {
         this.clearHearts();
         const heartCount = health === 100 ? 3 : health === 66 ? 2 : health === 33 ? 1 : 0;
-        // let leaderY = !Global.isMobileOnly ? this.extraTop + 1100 * this.scaleFact : this.extraTop + 1100 * this.scaleFact;
-        // let leaderX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .8;
-        const heartScale = (this.c_w - this.extraLeftPer * 5) * .000263 * 0.5; // Adjust scale as needed
+        const heartScale = (this.c_w - this.extraLeftPer * 5) * .000263 * 0.5;
         const heartSpacing = 1000 * this.scaleFact; // Space between hearts
 
         for (let i = 0; i < heartCount; i++) {
             const heartX = this.leaderPanel.x + 450 * this.scaleFact + (i * heartSpacing); // Start at leaderboard's x, spread horizontally
             const heartY = this.leaderPanel.y + this.leaderPanel.height * this.leaderPanel.scaleY + 350 * this.scaleFact; // Below leaderboard
-            // const heart = this.create(heartX, heartY, 'ui', 'monkey_badge0000'); // Replace 'heart0000' with your frame name
             const heart = this.scene.add.image(heartX, heartY, 'heart'); 
             heart.setScale(heartScale);
             heart.setDepth(1000);
@@ -283,187 +272,5 @@ export class UI extends Phaser.GameObjects.Group {
         }
         console.log(`Hearts updated: ${heartCount} hearts displayed for health ${health}`);
     }
-
-
-    // async fetchLeaderboardData() {
-    //     try {
-    //         const response = await axios.get('http://localhost:5001/api/users/getUsers');
-    //         console.log(response.data);
-    //         const leaderData = response.data.map( user => ({
-    //             userName: user.userName,
-    //             points: user.maxScore
-    //         }));
-    //         console.log(leaderData);
-    //         return leaderData;
-    //     } catch (error) {
-    //         console.error('Error fetching leaderboard data:', error);
-    //         return [];
-    //     }
-    // }
-    
-
-   // Method to create the leaderboard panel (initially hidden)
-// async createLeaderboardPopup() {
-//     this.leaderboardPopup = this.create(this.c_w * 0.5, this.c_h * 0.5, 'ui', 'panel0000');
-//     this.leaderboardPopup.setScale(this.scaleFact * 4);
-//     this.leaderboardPopup.setDepth(2000);
-//     this.leaderboardPopup.setScrollFactor(0);
-//     this.leaderboardPopup.setVisible(false); // Initially hidden
-
-//     // Fetch leaderboard data from the backend API
-//     this.tempData = await this.fetchLeaderboardData();
-
-//     // Log the fetched data
-//     console.log('Fetched Leaderboard Data:', this.tempData);
-
-//     if (this.tempData && this.tempData.length > 0) {
-//         this.leaderboardData = this.tempData;
-//     } else {
-//         // Fallback sample data if fetch fails
-//         this.leaderboardData = [
-//             { userName: "Zombie", points: 1500 },
-//             { userName: "Sheriff", points: 1200 },
-//             { userName: "Chris", points: 1100 },
-//             { userName: "Justin", points: 900 },
-//             { userName: "Jimmy", points: 500 }
-//         ];
-//     }
-
-//     // Calculate top-right position relative to the leaderboard popup
-//     let popupWidth = this.leaderboardPopup.width * this.leaderboardPopup.scaleX;
-//     let popupHeight = this.leaderboardPopup.height * this.leaderboardPopup.scaleY;
-
-//     // Define the X positions for each column
-//     let rankColumnX = this.leaderboardPopup.x - popupWidth * 0.45;
-//     let nameColumnX = rankColumnX + 60; // Custom spacing for name column
-//     let scoreColumnX = nameColumnX + 230; // Custom spacing for score column
-
-
-//     // Position for the leaderboard text inside the popup (centered)
-//     let startX = this.leaderboardPopup.x - popupWidth * 0.4;
-//     let startY = this.leaderboardPopup.y - popupHeight * 0.3;
-//     let lineHeight = 50; // Spacing between each entry
-
-//     // Create leaderboard text elements dynamically
-//     this.leaderboardEntries = [];
-//     this.leaderboardData.forEach((entry, index) => {
-//         const rank = index + 1;
-//         let rankText = this.scene.add.text(
-//             rankColumnX, 
-//             startY + index * lineHeight, 
-//             `${rank}`, 
-//             {
-//                 fontFamily: 'pixelmix',
-//                 fontSize: '18px',
-//                 color: '#ffdd16',
-//                 stroke: '#000000',
-//                 strokeThickness: 9
-//             }
-//         );
-//         rankText.setDepth(2002);
-//         rankText.setScrollFactor(0);
-//         rankText.setVisible(false); // Initially hidden
-
-//         let nameText = this.scene.add.text(
-//             nameColumnX, 
-//             startY + index * lineHeight, 
-//             `${entry.userName}`, 
-//             {
-//                 fontFamily: 'pixelmix',
-//                 fontSize: '18px',
-//                 color: '#ffdd16',
-//                 stroke: '#000000',
-//                 strokeThickness: 9
-//             }
-//         );
-//         nameText.setDepth(2002);
-//         nameText.setScrollFactor(0);
-//         nameText.setVisible(false); // Initially hidden
-
-//         let scoreText = this.scene.add.text(
-//             scoreColumnX, 
-//             startY + index * lineHeight, 
-//             `${entry.points}`, 
-//             {
-//                 fontFamily: 'pixelmix',
-//                 fontSize: '18px',
-//                 color: '#ffdd16',
-//                 stroke: '#000000',
-//                 strokeThickness: 9
-//             }
-//         );
-//         scoreText.setDepth(2002);
-//         scoreText.setScrollFactor(0);
-//         scoreText.setVisible(false); // Initially hidden
-//         // Add all text elements to the leaderboard entries array
-//         this.leaderboardEntries.push({ rankText, nameText, scoreText });
-//     });
-//     // this.leaderboardData.forEach((entry, index) => {
-//     //     let text = this.scene.add.text(
-//     //         startX,
-//     //         startY + index * lineHeight,
-//     //         `${entry.rank}. ${entry.name} - ${entry.score}`,
-//     //         {
-//     //             fontFamily: 'pixelmix',
-//     //             fontSize: '24px',
-//     //             color: '#ffdd16',
-//     //             stroke: '#000000',
-//     //             strokeThickness: 9
-//     //         }
-//     //     );
-//     //     text.setDepth(2002);
-//     //     text.setScrollFactor(0);
-//     //     text.setVisible(false); // Initially hidden
-//     //     this.leaderboardEntries.push(text);
-//     // });
-
-
-//     // Close button for leaderboard
-//     // this.closeBtn = this.create(this.c_w * 0.5, this.c_h * 0.65, 'ui', 'closeBtn0000');
-//     this.closeBtn = this.create(this.leaderboardPopup.x + popupWidth * 0.58,this.leaderboardPopup.y - popupHeight * 0.45,'ui','closeBtn0000');
-//     this.closeBtn.setScale(0.3);  // Increase size
-//     this.closeBtn.setDepth(2001);
-//     this.closeBtn.setScrollFactor(0);
-//     this.closeBtn.setInteractive();
-//     this.closeBtn.setVisible(false);
-//     this.closeBtn.on('pointerdown', () => {
-//         this.leaderboardPopup.setVisible(false); // Hide leaderboard on close button click
-//         this.closeBtn.setVisible(false);
-//          // Hide all leaderboard entries
-//         //  this.leaderboardEntries.forEach(entry => entry.setVisible(false));
-//         // Hide all leaderboard entries when the close button is clicked
-//         this.leaderboardEntries.forEach(entry => {
-//             entry.rankText.setVisible(false);
-//             entry.nameText.setVisible(false);
-//             entry.scoreText.setVisible(false);
-//         });
-//     });
-
-//     this.add(this.leaderboardPopup);
-//     this.add(this.closeBtn);
-// }
-
-// // Method to show the leaderboard
-// showLeaderboardPopup() {
-//     this.leaderboardPopup.setVisible(true);
-//     this.closeBtn.setVisible(true);
-//     // this.leaderboardEntries.forEach(entry => entry.setVisible(true)); // Show all entries
-//     this.leaderboardEntries.forEach(entry => {
-//         entry.rankText.setVisible(true);
-//         entry.nameText.setVisible(true);
-//         entry.scoreText.setVisible(true);
-//     }); // Show all entries
-// }
-// hideLeaderboardPopup() {
-//     if (this.leaderboardPopup) {
-//         this.leaderboardPopup.setVisible(false);
-//         // this.leaderboardEntries.forEach(entry => entry.setVisible(false)); // Hide all entries
-//         this.leaderboardEntries.forEach(entry => {
-//             entry.rankText.setVisible(false);
-//             entry.nameText.setVisible(false);
-//             entry.scoreText.setVisible(false); // Hide all entries
-//         });
-//     }
-// }
 
 }
