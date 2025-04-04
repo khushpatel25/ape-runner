@@ -98,10 +98,25 @@
         width: 20vw;
         max-width: 100px;
       }
+      #game-title {
+        font-family: "pixelmix";
+        font-size: 42px;
+        text-align: center;
+        color: #ffdd16;
+        background-color: #1a1a1a; /* Dark pixel background */
+        padding: 16px 0;
+        margin: 0;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+        /* border-bottom: 4px solid #0dbdca; */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        z-index: 9999;
+      }
     </style>
   </head>
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
+    <h1 id="game-title">Gest Runner</h1>
     <div id="parent">
       <div id="game-sec"></div>
       <div class="dummy">
@@ -110,7 +125,12 @@
       </div>
       <div
         id="username_field"
-        style="display: flex; justify-content: center; align-items: center; flex-direction: column;"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        "
       >
         <input
           type="text"
@@ -119,11 +139,11 @@
           style="font-size: 16px; padding: 10px"
         />
         <input
-        type="password"
-        id="password_input"
-        placeholder="Enter your password"
-        style="font-size: 16px; padding: 10px; margin-top: 10px;"
-      />
+          type="password"
+          id="password_input"
+          placeholder="Enter your password"
+          style="font-size: 16px; padding: 10px; margin-top: 10px"
+        />
         <button
           id="start_game_button"
           style="
