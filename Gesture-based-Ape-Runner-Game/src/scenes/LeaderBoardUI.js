@@ -5,6 +5,8 @@ import {
     setScaleFactor
 } from "../objects/scale_factor";
 
+const BACKEND_URL_PATH = process.env.REACT_APP_BACKEND_URL;
+
 export default class LeaderBoardUI extends Phaser.Scene {
     constructor() {
         super({ 
@@ -20,7 +22,7 @@ export default class LeaderBoardUI extends Phaser.Scene {
 
     async fetchLeaderboardData() {
         try {
-            const response = await axios.get('http://localhost:5001/api/users/getUsers');
+            const response = await axios.get(`${BACKEND_URL_PATH}/api/users/getUsers`);
             console.log("inside leaderbaordUI file feth data", response.data);
             const leaderData = response.data.map(user => ({
                 userName: user.userName,

@@ -11,6 +11,7 @@ import { isMobile, isMobileOnly } from 'mobile-device-detect';
 import './style.scss';
 import { Global } from './objects/global';
 import LeaderBoardUI from './scenes/LeaderBoardUI';
+import { HowToPlayUI } from './scenes/HowToPlayUI.js';
 
 let DEFAULT_WIDTH = 1280;
 let DEFAULT_HEIGHT = 720;
@@ -24,6 +25,8 @@ Global.dpr = 1;
   DEFAULT_HEIGHT = 1280;
 } */
 
+  const BACKEND_URL_PATH = process.env.REACT_APP_BACKEND_URL;
+  console.log("Backend URL : ", BACKEND_URL_PATH);
 
 document.getElementById("start_game_button").addEventListener("click", async () => {
   const username = document.getElementById("username_input").value;
@@ -42,7 +45,7 @@ document.getElementById("start_game_button").addEventListener("click", async () 
 
   try {
 
-    const res = await axios.post("http://localhost:5001/api/users/register", {
+    const res = await axios.post(`${BACKEND_URL_PATH}/api/users/register`, {
       username,
       password
     })
@@ -77,7 +80,7 @@ const getHighScore = async () => {
   try {
       const userId = localStorage.getItem("userId");
       console.log(userId)
-      const maxScore = await axios.get(`http://localhost:5001/api/users/getCurrentUser?userId=${userId}`);
+      const maxScore = await axios.get(`${BACKEND_URL_PATH}/api/users/getCurrentUser?userId=${userId}`);
       console.log(maxScore)
       Global.highScore = maxScore.data.highScore;
   } catch (error) {
@@ -101,7 +104,7 @@ const gameStart = () => {
     dom: {
       createContainer: false
     },
-    scene: [PreLoader, Loader, Game, LeaderBoardUI],
+    scene: [PreLoader, Loader, Game, LeaderBoardUI, HowToPlayUI],
     physics: {
       default: 'matter',
       matter: {

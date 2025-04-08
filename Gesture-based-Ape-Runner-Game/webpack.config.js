@@ -7,6 +7,8 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const config = require('config');
 
+const Dotenv = require('dotenv-webpack');
+
 
 // Phaser webpack config
 const phaserModule = path.join(__dirname, '/node_modules/phaser-ce/');
@@ -40,11 +42,12 @@ const webpackConfig = {
         new CopyWebpackPlugin([{
             from: 'assets',
             to: 'assets'
-        }])/* ,
+        }]),/* ,
         new CopyWebpackPlugin([{
             from: 'json',
             to: 'json'
         }]) */
+        new Dotenv() 
     ],
     module: {
         rules: [

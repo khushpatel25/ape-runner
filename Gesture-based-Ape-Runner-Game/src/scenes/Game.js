@@ -30,7 +30,7 @@ import {
   } from "../objects/collision-area";
   import {
     UI
-  } from "../objects/Ui";
+  } from "../objects/UI";
   import {
     GameOver
   } from "../objects/GameOver";
@@ -482,7 +482,7 @@ import axios from "axios";
       const userId = localStorage.getItem("userId");
 
       try {
-        const res = await axios.put("http://localhost:5001/api/users/points", {
+        const res = await axios.put("${BACKEND_URL_PATH}/api/users/points", {
           userId,
           points:score
         })

@@ -42,9 +42,30 @@ export class UI extends Phaser.GameObjects.Group {
         this.gameFinished = false;
         let scoreX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .5;
         let scoreY = !Global.isMobileOnly ? this.extraTop + 80 * this.scaleFact : this.extraTop + 80 * this.scaleFact;
-        let leaderY = !Global.isMobileOnly ? this.extraTop + 1100 * this.scaleFact : this.extraTop + 1100 * this.scaleFact;
-        let leaderX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .8;
+        // let leaderY = !Global.isMobileOnly ? this.extraTop + 1100 * this.scaleFact : this.extraTop + 1100 * this.scaleFact;
+        // let leaderX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .8;
         this.scorePanel = this.create(scoreX, scoreY, 'ui', 'score_holder0000');
+
+        let leaderX = !Global.isMobileOnly ? this.extraLeftPer + 100 * this.scaleFact : this.c_w * .3; // Moved left from center (0.5 to 0.3)
+        let leaderY = !Global.isMobileOnly ? this.extraTop + 1100 * this.scaleFact : this.c_h * .15; // Moved up from center (e.g., 0.5 to 0.3)
+       
+        // How to Play Button
+        // this.howToPlayBtn = this.create(leaderX+ 990, leaderY, 'ui', 'playBtn0000');
+        this.howToPlayBtn = this.create(!Global.isMobileOnly ? leaderX + 990 : leaderX + 580, leaderY, 'ui', 'playBtn0000'); // Adjusted from +990 to +150 * scaleFact
+        this.howToPlayBtn.setOrigin(Global.isMobileOnly ? 0.5 : 0, 0);
+        this.howToPlayBtn.setScale((this.c_w - this.extraLeftPer * 2) * .000363);
+        this.howToPlayBtn.setDepth(1000);
+        this.howToPlayBtn.setScrollFactor(0);
+        this.howToPlayBtn.setInteractive();
+
+this.howToPlayBtn.on('pointerdown', () => {
+    this.scene.scene.pause('Game');                   // Pause the game scene
+    this.scene.scene.launch('HowToPlayUI');           // Launch HowToPlayUI scene
+    this.scene.scene.bringToTop('HowToPlayUI');       // Bring it to top if needed
+});
+
+        
+        
         // new addition
         this.leaderPanel = this.create(leaderX, leaderY, 'ui', 'leaderboardBtn0000');
         this.leaderPanel.setOrigin(Global.isMobileOnly ? 0.5 : 0, 0);
@@ -262,8 +283,14 @@ export class UI extends Phaser.GameObjects.Group {
         const heartSpacing = 1000 * this.scaleFact; // Space between hearts
 
         for (let i = 0; i < heartCount; i++) {
-            const heartX = this.leaderPanel.x + 450 * this.scaleFact + (i * heartSpacing); // Start at leaderboard's x, spread horizontally
-            const heartY = this.leaderPanel.y + this.leaderPanel.height * this.leaderPanel.scaleY + 350 * this.scaleFact; // Below leaderboard
+            // const heartX = this.leaderPanel.x + 450 * this.scaleFact + (i * heartSpacing); // Start at leaderboard's x, spread horizontally
+            // const heartY = this.leaderPanel.y + this.leaderPanel.height * this.leaderPanel.scaleY + 350 * this.scaleFact; // Below leaderboard
+            const heartX = !Global.isMobileOnly 
+                ? this.leaderPanel.x + 450 * this.scaleFact + (i * heartSpacing) 
+                : this.leaderPanel.x + this.leaderPanel.width * this.leaderPanel.scaleX - (450 * this.scaleFact) + (i * heartSpacing); // Right of Leaderboard button
+            const heartY = !Global.isMobileOnly 
+                ? this.leaderPanel.y + this.leaderPanel.height * this.leaderPanel.scaleY + 350 * this.scaleFact 
+                : this.leaderPanel.y + (350 * this.scaleFact); // Same Y as Leaderboard button
             const heart = this.scene.add.image(heartX, heartY, 'heart'); 
             heart.setScale(heartScale);
             heart.setDepth(1000);
