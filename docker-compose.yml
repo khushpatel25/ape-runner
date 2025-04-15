@@ -1,22 +1,27 @@
 version: '3'
 services:
   backend:
-    build: ./backend
-    image: ape-runner-backend:1.0
+    # platform: linux/amd64
+    # build: ./backend
+    # image: gest-runner-backend:linux
+    image: luvpatel/gest-runner:backend-linux
     container_name: backend
     ports:
-      - "5001:5001"
+      - "5003:5003"
     networks:
       - app-network
 
   frontend:
-    build: ./Gesture-based-Ape-Runner-Game
-    image: ape-runner-frontend:1.0
+    # platform: linux/amd64
+    # build: ./Gesture-based-Ape-Runner-Game
+    # image: gest-runner-frontend:linux
+    image: luvpatel/gest-runner:frontend-linux
     container_name: frontend
     ports:
-      - "8080:8080"
+      - "8082:8080"
     environment:
-      - BACKEND_URL_PATH=http://backend:5001
+      - REACT_APP_BACKEND_URL=http://backend:5003
+      - DANGEROUSLY_DISABLE_HOST_CHECK=true
     networks:
       - app-network
 

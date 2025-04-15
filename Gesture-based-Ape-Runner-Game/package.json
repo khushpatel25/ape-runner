@@ -5,7 +5,7 @@
     "author": "S@!f",
     "main": "index.js",
     "scripts": {
-        "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline --color --mode=development --https",
+        "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot --inline --color --mode=development --https=false --host 0.0.0.0 --allowed-hosts all --disable-host-check",
         "build:dev": "cross-env NODE_ENV=dev webpack -p --mode=production",
         "build:prod": "cross-env NODE_ENV=prod webpack -p--mode=production"
     },

@@ -85,6 +85,8 @@ const webpackConfig = {
     
     devServer: {
         // host:'192.168.1.100',
+        host: '0.0.0.0',  
+        allowedHosts: 'all',
         historyApiFallback: true,
         quiet: true
     }
