@@ -13,6 +13,7 @@ export class UI extends Phaser.GameObjects.Group {
     gameFinished = false;
     activeWeapon = null;
     scoreMultiplier = 1;
+    currentLevel = 1;  // Initially, start at Level 0 (for score below 100)
     heartSprites = [];
     constructor(game) {
         super(game);
@@ -58,13 +59,47 @@ export class UI extends Phaser.GameObjects.Group {
         this.howToPlayBtn.setScrollFactor(0);
         this.howToPlayBtn.setInteractive();
 
-this.howToPlayBtn.on('pointerdown', () => {
-    this.scene.scene.pause('Game');                   // Pause the game scene
-    this.scene.scene.launch('HowToPlayUI');           // Launch HowToPlayUI scene
-    this.scene.scene.bringToTop('HowToPlayUI');       // Bring it to top if needed
-});
+        this.howToPlayBtn.on('pointerdown', () => {
+            this.scene.scene.pause('Game');                   // Pause the game scene
+            this.scene.scene.launch('HowToPlayUI');           // Launch HowToPlayUI scene
+            this.scene.scene.bringToTop('HowToPlayUI');       // Bring it to top if needed
+        });
+
+        // // Add text object to display the level
+        // this.levelText = this.scene.add.text(
+        //     this.scorePanel.x + this.scorePanel.width * .07 * this.scorePanel.scaleX, // Position to the left of the score
+        //     this.scorePanel.y + this.scorePanel.height * .72 * this.scorePanel.scaleY,
+        //     `Level: ${this.currentLevel}`, // Initial display as Level 1
+        //     {
+        //         fontFamily: 'pixelmix',
+        //         fontSize: `${(this.c_w-this.extraLeftPer*2)*.015}px`,
+        //         color: '#ffffff'
+        //     }
+        // );
+        // this.levelText.setOrigin(0, 0.5);
+        // this.levelText.setDepth(1000);
+        // this.levelText.setScrollFactor(0);
+
+        // // Add text object to display the level (positioned to the right of leaderPanel)
+        // this.levelText = this.scene.add.text(
+        //     this.leaderPanel.x + (this.leaderPanel.width * this.leaderPanel.scaleX * (Global.isMobileOnly ? 0 : 1)) + (this.leaderPanel.width * this.leaderPanel.scaleX * 0.15), // Right of leaderPanel with 15% gap
+        //     this.leaderPanel.y + this.leaderPanel.height * 0.5 * this.leaderPanel.scaleY, // Vertically centered
+        //     `Level: ${this.currentLevel}`,
+        //     {
+        //         fontFamily: 'pixelmix',
+        //         fontSize: `${(this.c_w - this.extraLeftPer * 2) * .015}px`,
+        //         color: '#ffffff'
+        //     }
+        // );
+        // this.levelText.setOrigin(0, 0.5);
+        // this.levelText.setDepth(1000);
+        // this.levelText.setScrollFactor(0);
+        // console.log('LeaderPanel at:', this.leaderPanel.x, this.leaderPanel.y, 'Scaled width:', this.leaderPanel.width * this.leaderPanel.scaleX, 'LevelText at:', this.levelText.x, this.levelText.y);
 
         
+
+        // // Initial level update (this will likely keep it at level 1 since score is 0)
+        // this.updateLevelDisplay(Global.scoreTotal);
         
         // new addition
         this.leaderPanel = this.create(leaderX, leaderY, 'ui', 'leaderboardBtn0000');
@@ -92,6 +127,47 @@ this.howToPlayBtn.on('pointerdown', () => {
              });
            
         });
+
+
+        // Add rectangular box for level text
+        this.levelTextBox = this.scene.add.graphics();
+        this.levelTextBox.setDepth(999);
+        this.levelTextBox.setScrollFactor(0);
+
+        // Add text object to display the level (positioned to the right of leaderPanel)
+        this.levelText = this.scene.add.text(
+            this.leaderPanel.x + (this.leaderPanel.width * this.leaderPanel.scaleX * (Global.isMobileOnly ? 0 : 1)) + (this.leaderPanel.width * this.leaderPanel.scaleX * 0.15), // Right of leaderPanel with 15% gap
+            this.leaderPanel.y + this.leaderPanel.height * 0.5 * this.leaderPanel.scaleY, // Vertically centered
+            `Level: ${this.currentLevel}`,
+            {
+                fontFamily: 'pixelmix',
+                fontSize: `${(this.c_w - this.extraLeftPer * 2) * .015}px`,
+                color: '#edce13'
+            }
+        );
+        this.levelText.setOrigin(0, 0.5);
+        this.levelText.setDepth(1000);
+        this.levelText.setScrollFactor(0);
+        console.log('LeaderPanel at:', this.leaderPanel.x, this.leaderPanel.y, 'Scaled width:', this.leaderPanel.width * this.leaderPanel.scaleX, 'LevelText at:', this.levelText.x, this.levelText.y);
+
+        // Draw box around level text
+        const textBounds = this.levelText.getBounds();
+        const text_paddingX = textBounds.width * 0.3; // 20% of text width
+        const text_paddingY = textBounds.height * 0.3; // 20% of text height
+        const boxWidth = textBounds.width + 2 * text_paddingX;
+        const boxHeight = textBounds.height + 2 * text_paddingY;
+        const boxX = this.levelText.x - text_paddingX;
+        const boxY = this.levelText.y - boxHeight / 2;
+        this.levelTextBox.clear();
+        this.levelTextBox.fillStyle(0x222223, 1);
+        this.levelTextBox.lineStyle(2, 0xffffff, 1);
+        this.levelTextBox.fillRoundedRect(boxX, boxY, boxWidth, boxHeight, boxWidth * 0.1);
+        this.levelTextBox.strokeRoundedRect(boxX, boxY, boxWidth, boxHeight, boxWidth * 0.1);
+        console.log('LeaderPanel at:', this.leaderPanel.x, this.leaderPanel.y, 'Scaled width:', this.leaderPanel.width * this.leaderPanel.scaleX, 'LevelText at:', this.levelText.x, this.levelText.y, 'Box at:', boxX, boxY, 'Box size:', boxWidth, boxHeight);
+         
+        // Initial level update (this will likely keep it at level 1 since score is 0)
+         this.updateLevelDisplay(Global.scoreTotal);
+        
 
         this.scorePanel.setOrigin(Global.isMobileOnly ? 0.5 : 0, 0);
         this.scorePanel.setScale((this.c_w - this.extraLeftPer * 2) * .000363);
@@ -264,6 +340,8 @@ this.howToPlayBtn.on('pointerdown', () => {
     addScore() {
         Global.scoreTotal += 5 * this.scoreMultiplier;
         this.scoreTxt.setText(Global.scoreTotal.toFixed(2));
+
+        this.updateLevelDisplay(Global.scoreTotal); // Call updateLevelDisplay here
     }
     onGameFinished() {
         this.gameFinished = true;
@@ -299,5 +377,24 @@ this.howToPlayBtn.on('pointerdown', () => {
         }
         console.log(`Hearts updated: ${heartCount} hearts displayed for health ${health}`);
     }
+
+
+    updateLevelDisplay = (score) => {
+        let newLevel = this.currentLevel;
+
+        if (score >= 85 && this.currentLevel === 1) {
+            newLevel = 2;
+            console.log("Reached Level 2!");
+        } else if (score >= 200 && this.currentLevel === 2) {
+            newLevel = 3;
+            console.log("Reached Level 3!");
+        }
+        // You can add more level thresholds here
+
+        if (newLevel !== this.currentLevel) {
+            this.currentLevel = newLevel;
+            this.levelText.setText(`Level: ${this.currentLevel}`);
+        }
+    };
 
 }

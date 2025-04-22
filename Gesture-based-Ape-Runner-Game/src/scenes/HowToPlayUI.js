@@ -7,21 +7,21 @@ export class HowToPlayUI extends Phaser.Scene {
     create() {
         const gameWidth = this.game.canvas.width;
         const gameHeight = this.game.canvas.height;
-
+        const padding = 40;
         // Dimmed background overlay
         this.add.rectangle(0, 0, gameWidth, gameHeight, 0x000000, 0.5)
             .setOrigin(0)
             .setDepth(999);
 
         // Draw popup box
-        const popupWidth = gameWidth * 0.4;
+        const popupWidth = gameWidth * 0.37;
         const popupHeight = gameHeight * 0.8;
 
         const popupX = (gameWidth - popupWidth) / 2;
         const popupY = (gameHeight - popupHeight) / 2;
 
         const popup = this.add.graphics();
-        popup.fillStyle(0xffffff, 1);
+        popup.fillStyle(0x222223, 1);
         popup.fillRoundedRect(
             popupX, 
             popupY,
@@ -29,6 +29,21 @@ export class HowToPlayUI extends Phaser.Scene {
             popupHeight,
             20
         ).setDepth(1000);
+
+       // Add "Play Gestures" title
+       this.add.text(
+        popupX + padding * 4, // Left-aligned with gesture images
+        popupY + 25, // 25px from top edge
+        '* Play Gestures *',
+        {
+            font: 'bold 22px Arial',
+            color: '#edce13',
+            wordWrap: { width: popupWidth - 2 * padding }
+        }
+        ).setOrigin(0, 0.5).setDepth(1001);
+        console.log('Play Gestures title added at:', popupX + padding, popupY + 25);
+
+
 
         // Example gesture rows (update these with your frame names + descriptions)
         const gestures = [
@@ -42,13 +57,12 @@ export class HowToPlayUI extends Phaser.Scene {
             { frame: 'high_five', description: 'Shield Activation' },
         ];
 
-        const padding = 40;
+        // const padding = 40;
         const rowHeight = 60;
-        const contentStartX = popupX + padding;
-        const contentStartY = popupY + padding;
+        const contentStartX = popupX + padding + 30;
+        // const contentStartY = popupY + padding;
+        const contentStartY = popupY + 100; // Increased to give title space
 
-        // const startX = gameWidth / 2 - 250;
-        // const startY = gameHeight / 2 - (gestures.length * 60) / 2;
 
         gestures.forEach((gesture, index) => {
             const y = contentStartY + index * rowHeight;
@@ -60,33 +74,24 @@ export class HowToPlayUI extends Phaser.Scene {
                 .setDepth(1001);
 
             // Description text
-            this.add.text(contentStartX + 100, y, gesture.description, {
+            this.add.text(contentStartX + 150, y, gesture.description, {
                 fontSize: '20px',
-                color: '#000000',
-                wordWrap: { width: popupWidth - 2 * padding - 100 }
+                color: '#edce13',
+                wordWrap: { width: popupWidth - 2 * padding - 150 }
             })
                 .setOrigin(0, 0.5)
                 .setDepth(1001);
         });
 
-        // // Instructional text
-        // this.add.text(gameWidth / 2, gameHeight / 2, 
-        //     '📱 HOW TO PLAY 📱\n\n👉 Swipe left/right: Move\n👆 Swipe up: Jump\n👆 Tap: Shoot\n\nGood Luck!',
-        //     {
-        //         font: '22px Arial',
-        //         fill: '#000',
-        //         align: 'center',
-        //         wordWrap: { width: popupWidth - 60 }
-        //     }
-        // ).setOrigin(0.5).setDepth(1001);
-
-        // Close button
-        const closeBtn = this.add.text(popupX + popupWidth / 2, popupY + popupHeight - padding, 'CLOSE', {
-            font: '24px Arial',
-            fill: '#ffffff',
-            backgroundColor: '#ff3333',
-            padding: { x: 16, y: 8 },
-        }).setOrigin(0.5).setInteractive().setDepth(1002);
+        const closeBtn = this.add.image(
+            popupX + popupWidth + 20, // Just outside right edge
+            popupY + 20, // Just below top edge
+            'ui',
+            'closeBtn0000'
+        );
+        closeBtn.setScale(0.3); // Match leaderboard button size
+        closeBtn.setDepth(2001); // Above popup and text
+        closeBtn.setInteractive();
 
         closeBtn.on('pointerdown', () => {
             this.scene.resume('Game');       // Resume main game
