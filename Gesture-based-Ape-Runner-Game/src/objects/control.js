@@ -75,7 +75,7 @@ export default class GameControl extends Phaser.GameObjects.Group {
             this.emitter.emit('game:drop_weapon');
             return false;
         }
-        if (v.keyCode == 27) {
+        if (v.keyCode == 4) {
             this.pauseGame();
             return false;
         }

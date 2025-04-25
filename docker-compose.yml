@@ -4,8 +4,10 @@ services:
     # platform: linux/amd64
     # build: ./backend
     # image: gest-runner-backend:linux
-    image: luvpatel/gest-runner:backend-linux
+    image: luvpatel/gest-runner:backend-linux2
     container_name: backend
+    env_file:
+      - ./gest-runner-env/backend.env
     ports:
       - "5003:5003"
     networks:
@@ -15,7 +17,7 @@ services:
     # platform: linux/amd64
     # build: ./Gesture-based-Ape-Runner-Game
     # image: gest-runner-frontend:linux
-    image: luvpatel/gest-runner:frontend-linux
+    image: luvpatel/gest-runner:frontend-linux3
     container_name: frontend
     ports:
       - "8082:8080"
